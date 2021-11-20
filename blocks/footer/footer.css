@@ -1,0 +1,22 @@
+.footer {
+  max-width: 880px;
+  color: rgba(84, 84, 84, 1);
+}
+
+@media screen and (max-width: 900px) {
+  .footer {
+    max-width: 618px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .footer {
+    max-width: 581px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    max-width: 282px;
+  }
+}
