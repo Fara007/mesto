@@ -1,7 +1,6 @@
 const editButton = document.querySelector(".profile__edit-button");
 const popup = document.querySelector(".popup");
 const popupCloseButton = popup.querySelector(".popup__close-icon");
-const popupOverlay = popup.querySelector(".popup__overlay");
 let formElement = document.querySelector(".form");
 let nameInput = formElement.querySelector(".form__input_user_name");
 let jobInput = formElement.querySelector(".form__input_user_job");
@@ -20,7 +19,6 @@ function close() {
 
 editButton.addEventListener('click', open);
 popupCloseButton.addEventListener('click', close);
-popupOverlay.addEventListener('click', close);
 
 function formSubmitHandler (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
