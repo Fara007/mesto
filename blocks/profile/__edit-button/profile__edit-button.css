@@ -3,7 +3,11 @@
   height: 24px;
   margin: 13px 244px 0 18px;
   background-color: black;
-  border-color: white;
+  border: 1px solid white;
+  transition: opacity 0.3s ease;
+  background-image: url(../../../images/profile-edit-button.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .profile__edit-button:hover {

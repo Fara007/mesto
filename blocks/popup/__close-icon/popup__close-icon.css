@@ -4,6 +4,14 @@
   right: -8px;
   cursor: pointer;
   transform: translate(100%, -100%);
+  transition: opacity 0.3s ease-in-out;
+  width: 32px;
+  height: 32px;
+  background-image: url(../../../images/close-icon.svg);
+  background-color: initial;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
 }
 
 .popup__close-icon:hover {
@@ -13,6 +21,7 @@
 @media screen and (max-width: 600px) {
   .popup__close-icon {
     width: 20px;
+    height: 20px;
     top: -16px;
     right: 16px;
   }

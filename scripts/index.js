@@ -1,32 +1,30 @@
-const editButton = document.querySelector(".profile__edit-button");
-const popup = document.querySelector(".popup");
-const popupCloseButton = popup.querySelector(".popup__close-icon");
-let formElement = document.querySelector(".form");
-let nameInput = formElement.querySelector(".form__input_user_name");
-let jobInput = formElement.querySelector(".form__input_user_job");
-let nameUser = document.querySelector(".profile__info-name");
-let jobUser = document.querySelector(".profile__info-job");
+const editButton = document.querySelector(".profile__edit-button");//Находим в документе кнопку "Редактировать"
+const popup = document.querySelector(".popup");//Находим попап
+const popupCloseButton = popup.querySelector(".popup__close-icon");//Находим кнопку "Закрыть" попап
+let formElement = document.querySelector(".form");//Находим форму
+let nameInput = formElement.querySelector(".form__input_user_name");//Находим в форме первую строчку, содержащую имя пользователя
+let jobInput = formElement.querySelector(".form__input_user_job");//Находим в форме вторую строчку, содержащую деятельность пользователя
+let nameUser = document.querySelector(".profile__info-name");//Находим в документе имя пользователя
+let jobUser = document.querySelector(".profile__info-job");//Находим в документе деятельность пользователя
 
-function open() {
-  nameInput.value = nameUser.textContent;
-  jobInput.value = jobUser.textContent;
+function openPopup() {
+  nameInput.value = nameUser.textContent;//Передаем текст с именем из профайла в инпут формы
+  jobInput.value = jobUser.textContent;//Передаем текст с деятельностью из профайла в инпут формы
   popup.classList.add("popup_opened");
-}
+} //Создаем функцию открытия попапа
+//При открытии в форме уже находятся данные, которые находятся в профайле
 
-function close() {
+function closePopup() {
   popup.classList.remove("popup_opened");
-}
-
-editButton.addEventListener('click', open);
-popupCloseButton.addEventListener('click', close);
+} //Создаем функцию закрытия попапа
 
 function formSubmitHandler (evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  nameUser.textContent = nameInput.value;
-  jobUser.textContent = jobInput.value;
-  close();
+  evt.preventDefault(); // Отменяем стандартную отправку формы
+  nameUser.textContent = nameInput.value;//Передаем текст с именем из инпута в профайл
+  jobUser.textContent = jobInput.value;//Передаем текст с деятельностью из инпута в профайл
+  closePopup();
 }
 
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', formSubmitHandler);
+editButton.addEventListener('click', openPopup);// Прикрепляем обработчик: по клику на кнопку "Редактировать" открывается попап
+popupCloseButton.addEventListener('click', closePopup);// Прикрепляем обработчик к форме: по клику на кнопку "Закрыть" закрывается попап
+formElement.addEventListener('submit', formSubmitHandler);// Прикрепляем обработчик к форме: он следит за событием “submit”
