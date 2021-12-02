@@ -1,3 +1,7 @@
 .form__input_place_link {
   color: rgba(196, 196, 196, 1);
 }
+
+.form__input_place_link:focus {
+  color: rgba(0, 0, 0, 1);
+}
