@@ -72,6 +72,9 @@ function addCards(card) {
   const deleteButton = newCard.querySelector('.element__delete-icon');
   deleteButton.addEventListener('click', formDeleteHandler);
 
+  const likeButton = newCard.querySelector('.element__like');
+  likeButton.addEventListener('click', activelike);
+
   return newCard;
 }
 
@@ -125,6 +128,11 @@ function formDeleteHandler(event) {
   const targetEl = event.target;
   const deleteCard = targetEl.closest('.element');
   deleteCard.remove();
+}
+
+function activelike(event) {
+  const targetEl = event.target;
+  targetEl.classList.toggle('element__like_active');
 }
 
 editButton.addEventListener('click', openPopupEdit);// Прикрепляем обработчик: по клику на кнопку "Редактировать" открывается попап
