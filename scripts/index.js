@@ -69,6 +69,9 @@ function addCards(card) {
   const headerEl = newCard.querySelector('.element__title');
   headerEl.textContent = card.name;
 
+  const deleteButton = newCard.querySelector('.element__delete-icon');
+  deleteButton.addEventListener('click', formDeleteHandler);
+
   return newCard;
 }
 
@@ -116,6 +119,12 @@ function formCreateHandler(evt) {
   const cardHTML = addCards(newCard);
   cardContainer.prepend(cardHTML);
   closePopup('.popup_add');
+}
+
+function formDeleteHandler(event) {
+  const targetEl = event.target;
+  const deleteCard = targetEl.closest('.element');
+  deleteCard.remove();
 }
 
 editButton.addEventListener('click', openPopupEdit);// Прикрепляем обработчик: по клику на кнопку "Редактировать" открывается попап
