@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
   <link rel="shortcut icon" href="#">
+  <script src="./scripts/card.js" defer></script>
   <script src="./scripts/index.js" defer></script>
   <title>Mesto</title>
 </head>
@@ -35,7 +36,7 @@
     </main>
 
     <footer class="footer page__footer">
-      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+      <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
 
     <div class="popup popup_edit">
@@ -43,8 +44,8 @@
         <button class="popup__close-icon popup__close-icon_edit" type="button" aria-label="Закрыть."></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="form form_edit" action="URL" name="popup-form">
-          <input class="form__input form__input_user_name" type="text" name="info-name">
-          <input class="form__input form__input_user_job" type="text" name="info-job">
+          <input class="form__input form__input_user_name" type="text" name="info-name" required>
+          <input class="form__input form__input_user_job" type="text" name="info-job" required>
           <button type="submit" class="form__button form__button_add_card" name="submit"
             value="Сохранить">Сохранить</button>
         </form>
@@ -55,9 +56,9 @@
         <button class="popup__close-icon popup__close-icon_add" type="button" aria-label="Закрыть."></button>
         <h2 class="popup__title">Новое место</h2>
         <form class="form form_add" action="URL" name="popup-form">
-          <input class="form__input form__input_place_name" type="text" name="info-name" placeholder="Название">
+          <input class="form__input form__input_place_name" type="text" name="info-name" placeholder="Название" required>
           <input class="form__input form__input_place_link" type="text" name="info-link"
-            placeholder="Ссылка на картинку">
+          placeholder="Ссылка на картинку" required>
           <button type="submit" class="form__button form__button_add_card" name="submit"
             value="Создать">Создать</button>
         </form>
