@@ -36,3 +36,6 @@
 @import url(../blocks/form/__input/_place/form__input_place_name.css);
 @import url(../blocks/form/__input/_place/form__input_place_link.css);
 @import url(../blocks/form/__button/form__button.css);
+@import url(../blocks/figure/figure.css);
+@import url(../blocks/figure/__image/figure__image.css);
+@import url(../blocks/figure/__subtitle/figure__subtitle.css);

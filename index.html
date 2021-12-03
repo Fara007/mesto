@@ -14,7 +14,7 @@
 <body>
   <div class="page">
     <header class="header page__header">
-      <img  class="header__logo" src="./images/header-logo.svg" alt="Логотип.">
+      <img class="header__logo" src="./images/header-logo.svg" alt="Логотип.">
     </header>
 
     <main class="content page__content">
@@ -43,9 +43,10 @@
         <button class="popup__close-icon popup__close-icon_edit" type="button" aria-label="Закрыть."></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="form form_edit" action="URL" name="popup-form">
-            <input class="form__input form__input_user_name" type="text" name="info-name">
-            <input class="form__input form__input_user_job" type="text" name="info-job">
-            <button type="submit" class="form__button form__button_add_card" value="Сохранить">Сохранить</button>
+          <input class="form__input form__input_user_name" type="text" name="info-name">
+          <input class="form__input form__input_user_job" type="text" name="info-job">
+          <button type="submit" class="form__button form__button_add_card" name="submit"
+            value="Сохранить">Сохранить</button>
         </form>
       </div>
     </div>
@@ -54,18 +55,27 @@
         <button class="popup__close-icon popup__close-icon_add" type="button" aria-label="Закрыть."></button>
         <h2 class="popup__title">Новое место</h2>
         <form class="form form_add" action="URL" name="popup-form">
-            <input class="form__input form__input_place_name" type="text" name="info-name">
-            <input class="form__input form__input_place_link" type="text" name="info-link">
-            <button type="submit" class="form__button form__button_add_card" value="Сохранить">Создать</button>
+          <input class="form__input form__input_place_name" type="text" name="info-name" placeholder="Название">
+          <input class="form__input form__input_place_link" type="text" name="info-link"
+            placeholder="Ссылка на картинку">
+          <button type="submit" class="form__button form__button_add_card" name="submit"
+            value="Создать">Создать</button>
         </form>
       </div>
+    </div>
+    <div class="popup popup_image">
+      <figure class="figure">
+        <button class="popup__close-icon popup__close-icon_image" type="button" aria-label="Закрыть."></button>
+        <img class="figure__image" src="#" alt="Фотография">
+        <figcaption class="figure__subtitle"></figcaption>
+      </figure>
     </div>
   </div>
 
   <template class="template">
     <article class="element">
       <button class="element__delete-icon" type="button" aria-label="Удалить."></button>
-      <img class="element__image">
+      <img class="element__image" src="#" alt="Фотография">
       <div class="element__group">
         <h2 class="element__title"></h2>
         <button class="element__like" type="button" aria-label="Лайк."></button>
@@ -74,4 +84,5 @@
   </template>
 
 </body>
+
 </html>
