@@ -28,7 +28,7 @@ function render(cardsArr, container) {
   cardContainer.append(...cardsHTML);
 }//Создаем функцию для рендера карточек
 
-render();
+render(initialCards, cardContainer);
 
 function addCard(card) {
   const newCard = templateEl.content.cloneNode(true);//Клонируем дерево из template
@@ -51,9 +51,7 @@ function addCard(card) {
 }
 
 function openPopup(somePopup) {
-  const popup = somePopup;
-
-  popup.classList.add("popup_opened");
+  somePopup.classList.add("popup_opened");
 } //Создаем функцию открытия попапа
 
 function openPopupEdit() {
@@ -77,16 +75,14 @@ function openPopupImage(event) {
 }//Создаем функцию для открытия попапа с картинкой
 
 function closePopup(somePopup) {
-  const popup = document.querySelector(`${somePopup}`);
-
-  popup.classList.remove("popup_opened");
+  somePopup.classList.remove("popup_opened");
 } //Создаем функцию закрытия попапа
 
 function SubmitHandle (evt) {
   evt.preventDefault(); // Отменяем стандартную отправку формы
   nameUser.textContent = nameInput.value;//Передаем текст с именем из инпута в профайл
   jobUser.textContent = jobInput.value;//Передаем текст с деятельностью из инпута в профайл
-  closePopup('.popup_edit');
+  closePopup(popupEditProfile);
 }
 
 function CreateHandle(evt) {
@@ -99,7 +95,7 @@ function CreateHandle(evt) {
 
   const cardHTML = addCard(newCard);
   cardContainer.prepend(cardHTML);
-  closePopup('.popup_add');
+  closePopup(popupAddCard);
 }//Создаем функцию для создания карточки
 
 function deleteCard(event) {
@@ -115,8 +111,8 @@ function activelike(event) {
 
 editButton.addEventListener('click', openPopupEdit);// Прикрепляем обработчик: по клику на кнопку "Редактировать" открывается попап
 addButton.addEventListener('click', ()=> openPopup(popupAddCard));// Прикрепляем обработчик открытия попапа добавления карточки
-popupCloseEdit.addEventListener('click', ()=> closePopup('.popup_edit'));// Прикрепляем обработчик к форме: по клику на кнопку "Закрыть" закрывается попап
-popupCloseAdd.addEventListener('click', ()=> closePopup('.popup_add'));// Прикрепляем обработчик закрытия попапа добавления карточки
-popupCloseImage.addEventListener('click', ()=> closePopup('.popup_image'));// Прикрепляем обработчик закрытия попапа с картинкой
+popupCloseEdit.addEventListener('click', ()=> closePopup(popupEditProfile));// Прикрепляем обработчик к форме: по клику на кнопку "Закрыть" закрывается попап
+popupCloseAdd.addEventListener('click', ()=> closePopup(popupAddCard));// Прикрепляем обработчик закрытия попапа добавления карточки
+popupCloseImage.addEventListener('click', ()=> closePopup(popupImage));// Прикрепляем обработчик закрытия попапа с картинкой
 formEdit.addEventListener('submit', SubmitHandle);// Прикрепляем обработчик к форме: он следит за событием “submit” редактирования профиля
 formAdd.addEventListener('submit', CreateHandle);// Прикрепляем обработчик к форме: он следит за событием “submit” добавления карточки
