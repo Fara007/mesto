@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
   <link rel="shortcut icon" href="#">
+  <script src="./scripts/validate.js" defer></script>
   <script src="./scripts/card.js" defer></script>
   <script src="./scripts/index.js" defer></script>
   <title>Mesto</title>
@@ -40,31 +41,37 @@
     </footer>
 
     <div class="popup popup_edit">
+      <div class="popup__overlay popup_overlay_edit"></div>
       <div class="popup__content">
         <button class="popup__close-icon popup__close-icon_edit" type="button" aria-label="Закрыть."></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="form form_edit" action="URL" name="popup-form">
-          <input class="form__input form__input_user_name" type="text" name="info-name" required>
-          <input class="form__input form__input_user_job" type="text" name="info-job" required>
+          <input id="name-user" class="form__input form__input_user_name" type="text" name="info-name" minlength="2" maxlength="40" required>
+          <span id="name-user-error" class="error"></span>
+          <input id="job-user" class="form__input form__input_user_job" type="text" name="info-job" minlength="2" maxlength="200" required>
+          <span id="job-user-error" class="error"></span>
           <button type="submit" class="form__button form__button_add_card" name="submit"
             value="Сохранить">Сохранить</button>
         </form>
       </div>
     </div>
     <div class="popup popup_add">
+      <div class="popup__overlay popup_overlay_add"></div>
       <div class="popup__content">
         <button class="popup__close-icon popup__close-icon_add" type="button" aria-label="Закрыть."></button>
         <h2 class="popup__title">Новое место</h2>
         <form class="form form_add" action="URL" name="popup-form">
-          <input class="form__input form__input_place_name" type="text" name="info-name" placeholder="Название" required>
-          <input class="form__input form__input_place_link" type="text" name="info-link"
-          placeholder="Ссылка на картинку" required>
+          <input id="name-card" class="form__input form__input_place_name" type="text" name="info-name" placeholder="Название" minlength="2" maxlength="30" required>
+          <span id="name-card-error" class="error"></span>
+          <input id="link-card" class="form__input form__input_place_link" type="url" name="info-link" placeholder="Ссылка на картинку" required>
+          <span id="link-card-error" class="error"></span>
           <button type="submit" class="form__button form__button_add_card" name="submit"
             value="Создать">Создать</button>
         </form>
       </div>
     </div>
     <div class="popup popup_image">
+      <div class="popup__overlay popup_overlay_image"></div>
       <figure class="figure">
         <button class="popup__close-icon popup__close-icon_image" type="button" aria-label="Закрыть."></button>
         <img class="figure__image" src="#" alt="Фотография">

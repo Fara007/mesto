@@ -29,13 +29,17 @@
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__overlay/popup__overlay.css);
 @import url(../blocks/popup/__content/popup__content.css);
 @import url(../blocks/popup/__close-icon/popup__close-icon.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__input/_place/form__input_place_name.css);
 @import url(../blocks/form/__input/_place/form__input_place_link.css);
+@import url(../blocks/form/__input/_type/form__input_type_error.css);
 @import url(../blocks/form/__button/form__button.css);
+@import url(../blocks/form/__button/_disabled/form__button_disabled.css);
+@import url(../blocks/error/error.css);
 @import url(../blocks/figure/figure.css);
 @import url(../blocks/figure/__image/figure__image.css);
 @import url(../blocks/figure/__subtitle/figure__subtitle.css);
