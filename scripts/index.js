@@ -17,7 +17,8 @@ const nameUser = document.querySelector(".profile__info-name");//Находим 
 const jobUser = document.querySelector(".profile__info-job");//Находим в документе деятельность пользователя
 const placeName = document.querySelector(".form__input_place_name");//Находим в форме первую строчку, содержащую название
 const placeLink = document.querySelector(".form__input_place_link");//Находим в форме первую строчку, содержащую ссылку на картинку
-const cardAdd = document.querySelector(".form__button_add_card")//Находим в форму кнопку "Создать" карточку для отправки
+const formButton = document.querySelector('.form__button');
+const cardAddButton = document.querySelector(".form__button_add_card")//Находим в форму кнопку "Создать" карточку для отправки
 const cardContainer = document.querySelector(".elements")//Находим в документе контейнер с карточками
 const templateEl = document.querySelector(".template");//Находим в документе template элемент
 const imageEl = document.querySelector('.figure__image');//Находим в документе элемент с картинкой
@@ -65,6 +66,15 @@ function openPopupEdit() {
   openPopup(popupEditProfile);
 }//Создаем функцию для открытия попапа редактирования
 
+function openPopupAdd() {
+  formAdd.reset();
+
+  cardAddButton.classList.add("form__button_disabled");
+  cardAddButton.disabled = true;
+
+  openPopup(popupAddCard);
+}
+
 function openPopupImage(event) {
   const targetEl = event.target;
   const targetElLink = event.target.getAttribute('src');
@@ -79,7 +89,7 @@ function openPopupImage(event) {
 }//Создаем функцию для открытия попапа с картинкой
 
 function closePopup(somePopup) {
-  document.removeEventListener('keydown', keyHandler);//// Прикрепляем обработчик закрытия попапа нажатием на Esc
+  document.removeEventListener('keydown', keyHandler);//// Удаляем обработчик закрытия попапа нажатием на Esc
   somePopup.classList.remove("popup_opened");
 } //Создаем функцию закрытия попапа
 
@@ -90,14 +100,14 @@ function keyHandler(evt) {
   }
 } //Coздаем функцию закрытия попапа нажатием на Escape
 
-function SubmitHandle (evt) {
+function handleProfileFormSubmit (evt) {
   evt.preventDefault(); // Отменяем стандартную отправку формы
   nameUser.textContent = nameInput.value;//Передаем текст с именем из инпута в профайл
   jobUser.textContent = jobInput.value;//Передаем текст с деятельностью из инпута в профайл
   closePopup(popupEditProfile);
 }
 
-function CreateHandle(evt) {
+function handleCardSubmit(evt) {
   evt.preventDefault();
 
   const newCard = {
@@ -107,6 +117,12 @@ function CreateHandle(evt) {
 
   const cardHTML = addCard(newCard);
   cardContainer.prepend(cardHTML);
+
+  formAdd.reset();
+
+  cardAddButton.classList.add('form__button_disabled');
+  cardAddButton.disabled = true;
+
   closePopup(popupAddCard);
 }//Создаем функцию для создания карточки
 
@@ -122,12 +138,12 @@ function activelike(event) {
 }//Создаем функцию для лайка карточки
 
 editButton.addEventListener('click', openPopupEdit);// Прикрепляем обработчик: по клику на кнопку "Редактировать" открывается попап
-addButton.addEventListener('click', ()=> openPopup(popupAddCard));// Прикрепляем обработчик открытия попапа добавления карточки
+addButton.addEventListener('click', openPopupAdd);// Прикрепляем обработчик открытия попапа добавления карточки
 popupCloseEdit.addEventListener('click', ()=> closePopup(popupEditProfile));// Прикрепляем обработчик к форме: по клику на кнопку "Закрыть" закрывается попап
 popupCloseAdd.addEventListener('click', ()=> closePopup(popupAddCard));// Прикрепляем обработчик закрытия попапа добавления карточки
 popupCloseImage.addEventListener('click', ()=> closePopup(popupImage));// Прикрепляем обработчик закрытия попапа с картинкой
 popupOverlayEdit.addEventListener('click', ()=> closePopup(popupEditProfile));// Прикрепляем обработчик закрытия попапа редактирования профиля
 popupOverlayAdd.addEventListener('click', ()=> closePopup(popupAddCard));// Прикрепляем обработчик закрытия попапа добавления карточки
 popupOverlayImage.addEventListener('click', ()=> closePopup(popupImage));// Прикрепляем обработчик закрытия попапа с картинкой
-formEdit.addEventListener('submit', SubmitHandle);// Прикрепляем обработчик к форме: он следит за событием “submit” редактирования профиля
-formAdd.addEventListener('submit', CreateHandle);// Прикрепляем обработчик к форме: он следит за событием “submit” добавления карточки
+formEdit.addEventListener('submit', handleProfileFormSubmit);// Прикрепляем обработчик к форме: он следит за событием “submit” редактирования профиля
+formAdd.addEventListener('submit', handleCardSubmit);// Прикрепляем обработчик к форме: он следит за событием “submit” добавления карточки
