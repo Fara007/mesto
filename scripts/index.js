@@ -1,28 +1,26 @@
-const editButton = document.querySelector(".profile__edit-button");//Находим в документе кнопку "Редактировать"
-const addButton = document.querySelector(".profile__add-button");//Находим в документе кнопку "Добавить"
+//------------------------------------------------Popup----------------------------------------------------//
+const popups = document.querySelectorAll('.popup');//Находим попап
 const popupEditProfile = document.querySelector(".popup_edit");//Находим попап редактирования профиля
 const popupAddCard = document.querySelector(".popup_add");//Находим попап добавления карточки
 const popupImage = document.querySelector(".popup_image");//Находим попап с картинкой
-const popupCloseEdit = document.querySelector(".popup__close-icon_edit");//Находим кнопку "Закрыть" попап редактирования профиля
-const popupCloseAdd = document.querySelector(".popup__close-icon_add");//Находим кнопку "Закрыть" попап добавления карточки
-const popupCloseImage = document.querySelector(".popup__close-icon_image");//Находим кнопку "Закрыть" попап с картинкой
-const popupOverlayEdit = document.querySelector(".popup__overlay_edit");//Находим оверлей
-const popupOverlayAdd = document.querySelector(".popup__overlay_add");//Находим оверлей
-const popupOverlayImage = document.querySelector(".popup__overlay_image");//Находим оверлей
+const imageEl = document.querySelector(".figure__image");//Находим в документе элемент с картинкой
+const captionEl = document.querySelector(".figure__subtitle");//Находим в документе подзаголовок к картинке
+//------------------------------------------------Profile----------------------------------------------------//
+const editButton = document.querySelector(".profile__edit-button");//Находим в документе кнопку "Редактировать"
+const addButton = document.querySelector(".profile__add-button");//Находим в документе кнопку "Добавить"
+const nameUser = document.querySelector(".profile__info-name");//Находим в документе имя пользователя
+const jobUser = document.querySelector(".profile__info-job");//Находим в документе деятельность пользователя
+//-------------------------------------------------Form------------------------------------------------------//
 const formEdit = document.querySelector(".form_edit");//Находим форму редактирования
 const formAdd = document.querySelector(".form_add");//Находим форму добавления
 const nameInput = formEdit.querySelector(".form__input_user_name");//Находим в форме первую строчку, содержащую имя пользователя
 const jobInput = formEdit.querySelector(".form__input_user_job");//Находим в форме вторую строчку, содержащую деятельность пользователя
-const nameUser = document.querySelector(".profile__info-name");//Находим в документе имя пользователя
-const jobUser = document.querySelector(".profile__info-job");//Находим в документе деятельность пользователя
 const placeName = document.querySelector(".form__input_place_name");//Находим в форме первую строчку, содержащую название
 const placeLink = document.querySelector(".form__input_place_link");//Находим в форме первую строчку, содержащую ссылку на картинку
-const formButton = document.querySelector('.form__button');
-const cardAddButton = document.querySelector(".form__button_add_card")//Находим в форму кнопку "Создать" карточку для отправки
+const cardAddButton = document.querySelector(".form__button_add_card")//Находим в форму кнопку "Создать" карточку
+//------------------------------------------------Template----------------------------------------------------//
 const cardContainer = document.querySelector(".elements")//Находим в документе контейнер с карточками
 const templateEl = document.querySelector(".template");//Находим в документе template элемент
-const imageEl = document.querySelector('.figure__image');//Находим в документе элемент с картинкой
-const captionEl = document.querySelector('.figure__subtitle');//Находим в документе подзаголовок к картинке
 
 function render(cardsArr, container) {
   const cardsHTML = initialCards.map((card) => {
@@ -73,7 +71,7 @@ function openPopupAdd() {
   cardAddButton.disabled = true;
 
   openPopup(popupAddCard);
-}
+}//Создаем функцию для открытия попапа создания карточки
 
 function openPopupImage(event) {
   const targetEl = event.target;
@@ -120,9 +118,6 @@ function handleCardSubmit(evt) {
 
   formAdd.reset();
 
-  cardAddButton.classList.add('form__button_disabled');
-  cardAddButton.disabled = true;
-
   closePopup(popupAddCard);
 }//Создаем функцию для создания карточки
 
@@ -139,11 +134,15 @@ function activelike(event) {
 
 editButton.addEventListener('click', openPopupEdit);// Прикрепляем обработчик: по клику на кнопку "Редактировать" открывается попап
 addButton.addEventListener('click', openPopupAdd);// Прикрепляем обработчик открытия попапа добавления карточки
-popupCloseEdit.addEventListener('click', ()=> closePopup(popupEditProfile));// Прикрепляем обработчик к форме: по клику на кнопку "Закрыть" закрывается попап
-popupCloseAdd.addEventListener('click', ()=> closePopup(popupAddCard));// Прикрепляем обработчик закрытия попапа добавления карточки
-popupCloseImage.addEventListener('click', ()=> closePopup(popupImage));// Прикрепляем обработчик закрытия попапа с картинкой
-popupOverlayEdit.addEventListener('click', ()=> closePopup(popupEditProfile));// Прикрепляем обработчик закрытия попапа редактирования профиля
-popupOverlayAdd.addEventListener('click', ()=> closePopup(popupAddCard));// Прикрепляем обработчик закрытия попапа добавления карточки
-popupOverlayImage.addEventListener('click', ()=> closePopup(popupImage));// Прикрепляем обработчик закрытия попапа с картинкой
+popups.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+        if (evt.target.classList.contains('popup__overlay')) {
+            closePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close-icon')) {
+          closePopup(popup)
+        }
+    })
+})//Oбъявляем функцию, которая проходится по всем попапам и закрывает их по клику на оверлей или иконку крестика
 formEdit.addEventListener('submit', handleProfileFormSubmit);// Прикрепляем обработчик к форме: он следит за событием “submit” редактирования профиля
 formAdd.addEventListener('submit', handleCardSubmit);// Прикрепляем обработчик к форме: он следит за событием “submit” добавления карточки

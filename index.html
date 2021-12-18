@@ -41,24 +41,24 @@
     </footer>
 
     <div class="popup popup_edit">
-      <div class="popup__overlay popup__overlay_edit"></div>
+      <div class="popup__overlay"></div>
       <div class="popup__content">
-        <button class="popup__close-icon popup__close-icon_edit" type="button" aria-label="Закрыть."></button>
+        <button class="popup__close-icon" type="button" aria-label="Закрыть."></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="form form_edit" action="URL" name="popup-form" novalidate>
           <input id="name-user" class="form__input form__input_user_name" type="text" name="info-name" minlength="2" maxlength="40" required>
           <span id="name-user-error" class="error"></span>
           <input id="job-user" class="form__input form__input_user_job" type="text" name="info-job" minlength="2" maxlength="200" required>
           <span id="job-user-error" class="error"></span>
-          <button type="submit" class="form__button form__button_add_card" name="submit"
+          <button type="submit" class="form__button" name="submit"
             value="Сохранить">Сохранить</button>
         </form>
       </div>
     </div>
     <div class="popup popup_add">
-      <div class="popup__overlay popup__overlay_add"></div>
+      <div class="popup__overlay"></div>
       <div class="popup__content">
-        <button class="popup__close-icon popup__close-icon_add" type="button" aria-label="Закрыть."></button>
+        <button class="popup__close-icon" type="button" aria-label="Закрыть."></button>
         <h2 class="popup__title">Новое место</h2>
         <form class="form form_add" action="URL" name="popup-form" novalidate>
           <input id="name-card" class="form__input form__input_place_name" type="text" name="info-name" placeholder="Название" minlength="2" maxlength="30" required>
@@ -71,9 +71,9 @@
       </div>
     </div>
     <div class="popup popup_image">
-      <div class="popup__overlay popup__overlay_image"></div>
+      <div class="popup__overlay"></div>
       <figure class="figure">
-        <button class="popup__close-icon popup__close-icon_image" type="button" aria-label="Закрыть."></button>
+        <button class="popup__close-icon" type="button" aria-label="Закрыть."></button>
         <img class="figure__image" src="#" alt="Фотография">
         <figcaption class="figure__subtitle"></figcaption>
       </figure>
