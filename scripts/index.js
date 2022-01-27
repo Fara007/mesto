@@ -69,7 +69,7 @@ formProfileValidator.enableValidation();
 formNewMestoValidator.enableValidation();
 
 function createCard(item) { // создаете карточку и возвращаете ее
-    const card = new Card('.template', item.name, item.link, item.alt, handleCardClick);
+    const card = new Card('.template', item.name, item.link, item.alt);
     const cardElement = card.getView();
     return cardElement;
 

@@ -1,12 +1,13 @@
 class Card {
-  constructor(name, link, alt, selector) {
+  constructor(selector, name, link, alt) {
+    this._selector = selector;
     this._name = name;
     this._link = link;
     this._alt = alt;
-    this._selector = selector;
   }
 
   _getItem() {
+    console.log(this._selector)
     return document.querySelector(this._selector)
            .сontent
            .querySelector('.element')
