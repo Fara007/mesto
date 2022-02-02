@@ -1,31 +1,26 @@
 class Card {
-  constructor(selector, name, link, alt) {
+  constructor(selector, name, link, alt, handleCardClick) {
     this._selector = selector;
     this._name = name;
     this._link = link;
     this._alt = alt;
+    this._handleCardClick = handleCardClick;
   }
 
   _getItem() {
-    console.log(this._selector)
-    return document.querySelector(this._selector)
-           .сontent
+    return document
+           .querySelector(this._selector)
+           .content
            .querySelector('.element')
            .cloneNode(true);
   }
 
-  _deleteCardButton() {
+  _deleteCardButton = () => {
     this._element.remove();
   }
 
-  _activateLike() {
+  _activateLike = () => {
     this._like.classList.toggle('element__like_active');
-  }
-
-  _setEventListeners() {
-    this._element.querySelector('.element__delete-icon').addEventListener('click', _deleteCardButton());
-
-    this._like.addEventListener('click', _activateLike());
   }
 
   getView() {
@@ -39,6 +34,14 @@ class Card {
     this._setEventListeners();
 
     return this._element;
+  }
+
+  _setEventListeners() {
+    this._element.querySelector('.element__delete-icon').addEventListener('click', this._deleteCardButton);
+
+    this._like.addEventListener('click', this._activateLike);
+
+    this._cardImage.addEventListener('click', () => {this._handleCardClick(this._name, this._link, this._alt)});
   }
 }
 
