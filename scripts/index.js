@@ -51,7 +51,7 @@ const cardAddButton = document.querySelector(".form__button_add_card")//Нахо
 //------------------------------------------------Template----------------------------------------------------//
 const cardContainer = document.querySelector(".elements")//Находим в документе контейнер с карточками
 
-const enableValidation = ({
+const formValidationObj = ({
   formSelector: '.form',
   inputSelector: '.form__input',
   submitButtonSelector: '.form__button',
@@ -60,8 +60,8 @@ const enableValidation = ({
   errorClass: 'form__error_visible'
 });
 
-const formProfileValidator = new FormValidator(enableValidation, formEdit);
-const formNewMestoValidator = new FormValidator(enableValidation, formAdd);
+const formProfileValidator = new FormValidator(formValidationObj, formEdit);
+const formNewMestoValidator = new FormValidator(formValidationObj, formAdd);
 
 formProfileValidator.enableValidation();
 formNewMestoValidator.enableValidation();

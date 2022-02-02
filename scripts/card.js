@@ -1,9 +1,9 @@
 class Card {
-  constructor(selector, name, link, alt, handleCardClick) {
+  constructor(selector, name, link, handleCardClick) {
     this._selector = selector;
     this._name = name;
     this._link = link;
-    this._alt = alt;
+    this._alt = name;
     this._handleCardClick = handleCardClick;
   }
 
@@ -17,6 +17,7 @@ class Card {
 
   _deleteCardButton = () => {
     this._element.remove();
+    this._element = null;
   }
 
   _activateLike = () => {
