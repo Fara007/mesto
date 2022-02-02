@@ -77,7 +77,7 @@ function render(cardsArr, container) {
 render(initialCards, cardContainer);
 
 function createCard(item) { // создаете карточку и возвращаете ее
-    const card = new Card('.template', item.name, item.link, item.alt, handleCardClick);
+    const card = new Card('.template', item.name, item.link, item.name, handleCardClick);
     const cardElement = card.getView();
     return cardElement;
 };
@@ -119,7 +119,7 @@ function handleCardClick(name, link, alt) {
   openPopup(popupImage);
   imageEl.src = link;
   captionEl.textContent = name;
-  imageEl.alt = alt;
+  imageEl.alt = name;
 };
 
 function handleProfileFormSubmit(evt) {
