@@ -7,7 +7,7 @@ class Card {
     this._handleCardClick = handleCardClick;
   }
 
-  _getItem() {
+  _getTemplate() {
     return document
            .querySelector(this._selector)
            .content
@@ -25,7 +25,7 @@ class Card {
   }
 
   getView() {
-    this._element = this._getItem();
+    this._element = this._getTemplate();
     this._like = this._element.querySelector('.element__like');
     this._cardImage = this._element.querySelector('.element__image');
     this._element.querySelector('.element__title').textContent = this._name;
