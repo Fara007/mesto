@@ -6,12 +6,9 @@ import PopupWithImage from "./components/PopupWithImage.js";
 import UserInfo from "./components/UserInfo.js";
 import {
   initialCards,
-  popups,
   popupEditProfile,
   popupAddCard,
   popupImage,
-  imageEl,
-  captionEl,
   editButton,
   addButton,
   profileNameUser,
@@ -41,7 +38,7 @@ const addCardForm = new PopupWithForm(popupAddCard, () => {
 );
 
 // UserInfo Form
-const userInfoForm = new UserInfo({profileNameUser, profileJobUser});
+const userInfoForm = new UserInfo({profileNameSelector: profileNameUser, profileJobSelector: profileJobUser});
 
 // Popups
 const popupUserInfo = new PopupWithForm(popupEditProfile, (inputs) => {
@@ -100,15 +97,11 @@ editButton.addEventListener('click', function () {
   jobInput.value = currentUserForm.job;
 
   popupUserInfo.openPopup();
-
-  formValidators[ formEdit.getAttribute('name') ].resetValidation();
 });
 
 // Open popupAddPost
 addButton.addEventListener('click', function () {
   addCardForm.openPopup();
-
-  formValidators[ formAdd.getAttribute('name') ].resetValidation();
 });
 
 addCardForm.setEventListeners();
