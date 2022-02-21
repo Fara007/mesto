@@ -1,9 +1,10 @@
-import Card from "./components/card.js";
-import FormValidator from "./components/FormValidator.js";
-import Section from "./components/section.js";
-import PopupWithForm from "./components/PopupWithForm.js";
-import PopupWithImage from "./components/PopupWithImage.js";
-import UserInfo from "./components/UserInfo.js";
+import '../src/styles/index.css';
+import Card from "../src/scripts/components/card.js";
+import FormValidator from "../src/scripts/components/FormValidator.js";
+import Section from "../src/scripts/components/section.js";
+import PopupWithForm from "../src/scripts/components/PopupWithForm.js";
+import PopupWithImage from "../src/scripts/components/PopupWithImage.js";
+import UserInfo from "../src/scripts/components/UserInfo.js";
 import {
   initialCards,
   popupEditProfile,
@@ -21,7 +22,9 @@ import {
   placeLink,
   cardAddButton,
   cardContainer
-} from "./utils/constants.js"
+} from "../src/scripts/utils/constants.js";
+import logo from './images/header-logo.svg';
+import avatar from './images/profile-avatar.jpg';
 
 // Section
 const section = new Section({ data: initialCards, renderer: getItem }, cardContainer);
