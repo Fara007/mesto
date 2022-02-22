@@ -42,7 +42,7 @@ class Card {
 
     this._like.addEventListener('click', this._activateLike);
 
-    this._cardImage.addEventListener('click', () => {this._handleCardClick(this._name, this._link, this._alt)});
+    this._cardImage.addEventListener('click', () => {this._handleCardClick()});
   }
 }
 

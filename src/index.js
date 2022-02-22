@@ -1,7 +1,7 @@
 import '../src/styles/index.css';
-import Card from "../src/scripts/components/card.js";
+import Card from "../src/scripts/components/Card.js";
 import FormValidator from "../src/scripts/components/FormValidator.js";
-import Section from "../src/scripts/components/section.js";
+import Section from "../src/scripts/components/Section.js";
 import PopupWithForm from "../src/scripts/components/PopupWithForm.js";
 import PopupWithImage from "../src/scripts/components/PopupWithImage.js";
 import UserInfo from "../src/scripts/components/UserInfo.js";
@@ -22,30 +22,32 @@ import {
   placeLink,
   cardAddButton,
   cardContainer
-} from "../src/scripts/utils/constants.js";
-import logo from './images/header-logo.svg';
-import avatar from './images/profile-avatar.jpg';
+} from "../src/scripts/utils/Constants.js";
+//import logo from './images/header-logo.svg';
+//import avatar from './images/profile-avatar.jpg';
 
 // Section
 const section = new Section({ data: initialCards, renderer: getItem }, cardContainer);
 
 // AddCard Form
-const addCardForm = new PopupWithForm(popupAddCard, () => {
-  const inputCardTitle = placeName.value;
-  const inputCardImage = placeLink.value;
+const addCardForm = new PopupWithForm(popupAddCard, (inputs) => {
+  //const inputCardTitle = placeName.value;
+  //const inputCardImage = placeLink.value;
 
-  const cardElement = getItem({name: inputCardTitle, link: inputCardImage});
+  const cardElement = getItem({name: inputs[placeName.name], link: inputs[placeLink.name]});
 
   section.addItem(cardElement);
+  addCardForm.closePopup();
 }
 );
 
 // UserInfo Form
-const userInfoForm = new UserInfo({profileNameSelector: profileNameUser, profileJobSelector: profileJobUser});
+const userInfoForm = new UserInfo({profileName: profileNameUser, profileJob: profileJobUser});
 
 // Popups
 const popupUserInfo = new PopupWithForm(popupEditProfile, (inputs) => {
   userInfoForm.setUserInfo(inputs[nameInput.name], inputs[jobInput.name]);
+  popupUserInfo.closePopup()
 });
 
 popupUserInfo.setEventListeners();
@@ -104,6 +106,9 @@ editButton.addEventListener('click', function () {
 
 // Open popupAddPost
 addButton.addEventListener('click', function () {
+  cardAddButton.disabled = true;
+  cardAddButton.classList.add("form__button_disabled")
+
   addCardForm.openPopup();
 });
 
