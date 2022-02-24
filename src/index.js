@@ -23,8 +23,6 @@ import {
   cardAddButton,
   cardContainer
 } from "../src/scripts/utils/Constants.js";
-//import logo from './images/header-logo.svg';
-//import avatar from './images/profile-avatar.jpg';
 
 // Section
 const section = new Section({ data: initialCards, renderer: getItem }, cardContainer);
@@ -106,8 +104,7 @@ editButton.addEventListener('click', function () {
 
 // Open popupAddPost
 addButton.addEventListener('click', function () {
-  cardAddButton.disabled = true;
-  cardAddButton.classList.add("form__button_disabled")
+  formValidators[formAdd.getAttribute('name')].resetValidation();
 
   addCardForm.openPopup();
 });

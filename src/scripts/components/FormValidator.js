@@ -58,6 +58,10 @@ class FormValidator {
     });
   }
 
+  resetValidation() {
+    this._toggleButtonError();
+  }
+
   enableValidation() {
    this._setInputListeners();
 }
