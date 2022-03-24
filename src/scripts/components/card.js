@@ -47,6 +47,7 @@ class Card {
     //this._setLikes();
     
     if(this._userId !== this._owner) {
+      console.log(this._userId, this._owner);
       this._element.querySelector('.element__delete-icon').style.display = 'none';
     } 
 

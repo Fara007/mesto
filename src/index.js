@@ -25,26 +25,26 @@ import {api} from '../src/scripts/components/Api.js';
 
 let userId;
 
-Promise.all([api.getInitialCards(), api.getProfile()])
-  .then(([cardsData, userData]) => {
-    userId = userData._id;
-    userInfoForm.setUserInfo(userData.name, userData.about);
+Promise.all([api.getProfile(), api.getInitialCards()])
+  .then(([res, cardList]) => {
+    userId = res._id;
+    userInfoForm.setUserInfo(res.name, res.about);
 
-    (cardList) => {
-    cardList.forEach(() => {
+    cardList.forEach((data) => {
       const cardElement = getItem({
-        name: cardsData.name,
-        link: cardsData.link,
-        likes: cardsData.likes,
-        id: cardsData._id,
+        name: data.name,
+        link: data.link,
+        likes: data.likes,
+        id: data._id,
         userId: userId,
-        ownerId: cardsData.owner._id,
-      });
-      
+        ownerId: data.owner._id,
+    });
+    
+    
       section.addItem(cardElement);
+    })
   })
-}
-});
+  .catch((err) => { console.log(`Ошибка: ${err}`) });
 
 //api.getProfile()
 //  .then((res) => {
