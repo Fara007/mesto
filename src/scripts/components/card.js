@@ -1,10 +1,15 @@
 class Card {
-  constructor(selector, name, link, alt, handleCardClick) {
+  constructor(selector, name, link, alt, likes, id, userId, ownerId, handleCardClick, handleDeleteClick) {
     this._selector = selector;
     this._name = name;
     this._link = link;
     this._alt = alt;
+    this._likes = likes;
+    this._id = id;
+    this._userId = userId;
+    this._owner = ownerId;
     this._handleCardClick = handleCardClick;
+    this._handleDeleteClick = handleDeleteClick;
   }
 
   _getTemplate() {
@@ -15,7 +20,7 @@ class Card {
            .cloneNode(true);
   }
 
-  _deleteCardButton = () => {
+  deleteCard() {
     this._element.remove();
     this._element = null;
   }
@@ -23,6 +28,11 @@ class Card {
   _activateLike = () => {
     this._like.classList.toggle('element__like_active');
   }
+
+  //_setLikes() {
+  //  const likeCountElements = document.querySelector('.element__like-count');
+  //  likeCountElements.textContent = this._likes.length;
+  //}
 
   getView() {
     this._element = this._getTemplate();
@@ -34,15 +44,21 @@ class Card {
 
     this._setEventListeners();
 
+    //this._setLikes();
+    
+    if(this._userId !== this._owner) {
+      this._element.querySelector('.element__delete-icon').style.display = 'none';
+    } 
+
     return this._element;
   }
 
   _setEventListeners() {
-    this._element.querySelector('.element__delete-icon').addEventListener('click', this._deleteCardButton);
+    this._cardImage.addEventListener('click', () => {this._handleCardClick()});
+    
+    this._element.querySelector('.element__delete-icon').addEventListener('click', () => {this._handleDeleteClick(this._id)});
 
     this._like.addEventListener('click', this._activateLike);
-
-    this._cardImage.addEventListener('click', () => {this._handleCardClick()});
   }
 }
 

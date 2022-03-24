@@ -30,6 +30,7 @@ export const popups = document.querySelectorAll('.popup');//Находим по�
 export const popupEditProfile = document.querySelector(".popup_edit");//Находим попап редактирования профиля
 export const popupAddCard = document.querySelector(".popup_add");//Находим попап добавления карточки
 export const popupImage = document.querySelector(".popup_image");//Находим попап с картинкой
+export const popupConfirm = document.querySelector(".popup__confirm");
 export const imageEl = document.querySelector(".figure__image");//Находим в документе элемент с картинкой
 export const captionEl = document.querySelector(".figure__subtitle");//Находим в документе подзаголовок к картинке
 //------------------------------------------------Profile----------------------------------------------------//

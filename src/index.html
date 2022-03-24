@@ -20,8 +20,8 @@
         <img class="profile__avatar" src="<%=require('./images/profile-avatar.jpg')%>" alt="Аватар профиля.">
         <div class="profile__info">
           <div class="profile__info-pole">
-            <h1 class="profile__info-name">Жак-Ив Кусто</h1>
-            <p class="profile__info-job">Исследователь океана</p>
+            <h1 class="profile__info-name" name="name"></h1>
+            <p class="profile__info-job" name="job"></p>
           </div>
           <button class="profile__edit-button" type="button" aria-label="Редактировать."></button>
         </div>
@@ -74,6 +74,16 @@
         <figcaption class="figure__subtitle"></figcaption>
       </figure>
     </div>
+    <div class="popup popup__confirm">
+      <div class="popup__overlay"></div>
+      <div class="popup__content">
+        <button class="popup__close-icon" type="button" aria-label="Закрыть."></button>
+        <h2 class="popup__title">Вы уверены?</h2>
+        <form class="form form__confirm" action="URL" name="form-confirm" novalidate>        
+          <button type="submit" class="popup__button" name="submit" value="Да">Да</button>
+        </form>  
+      </div>
+    </div>
   </div>
 
   <template class="template">
@@ -83,6 +93,7 @@
       <div class="element__group">
         <h2 class="element__title"></h2>
         <button class="element__like" type="button" aria-label="Лайк."></button>
+        <span class="element__like-count"></span>
       </div>
     </article>
   </template>
