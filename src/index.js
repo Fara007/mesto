@@ -29,7 +29,6 @@ Promise.all([api.getProfile(), api.getInitialCards()])
   .then(([res, cardList]) => {
     userId = res._id;
     userInfoForm.setUserInfo(res.name, res.about);
-
     cardList.forEach((data) => {
       const cardElement = getItem({
         name: data.name,
@@ -39,8 +38,6 @@ Promise.all([api.getProfile(), api.getInitialCards()])
         userId: userId,
         ownerId: data.owner._id,
     });
-    
-    
       section.addItem(cardElement);
     })
   })
@@ -138,11 +135,9 @@ enableValidation(formValidationObj);
 
 // Render cards with pictures
 function getItem(data) {
-  const handleCardClick = () => {
+  const card = new Card('.template', data.name, data.link, data.name, data.likes, data.id, data.userId, data.ownerId, () => {
     popupWithImage.openPopup(data);
-  }
-
-  const handleDeleteClick = (id) => {
+  },(id) => {
     popupWithConfirm.openPopup();
     popupWithConfirm.changeSubmitHandler(() => {
       api.deleteCard(id)
@@ -151,9 +146,7 @@ function getItem(data) {
          popupWithConfirm.closePopup();
       })
     })
-  }
-
-  const card = new Card('.template', data.name, data.link, data.name, data.likes, data.id, handleCardClick, handleDeleteClick);
+  })
   const cardElement = card.getView();
 
   return cardElement;

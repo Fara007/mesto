@@ -29,10 +29,10 @@ class Card {
     this._like.classList.toggle('element__like_active');
   }
 
-  //_setLikes() {
-  //  const likeCountElements = document.querySelector('.element__like-count');
-  //  likeCountElements.textContent = this._likes.length;
-  //}
+  _setLikes() {
+    const likeCountElements = this._element.querySelector('.element__like-count');
+    likeCountElements.textContent = this._likes.length;
+  }
 
   getView() {
     this._element = this._getTemplate();
@@ -44,10 +44,9 @@ class Card {
 
     this._setEventListeners();
 
-    //this._setLikes();
+    this._setLikes();
     
     if(this._userId !== this._owner) {
-      console.log(this._userId, this._owner);
       this._element.querySelector('.element__delete-icon').style.display = 'none';
     } 
 
