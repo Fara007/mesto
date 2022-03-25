@@ -1,5 +1,5 @@
 class Card {
-  constructor(selector, name, link, alt, likes, id, userId, ownerId, handleCardClick, handleDeleteClick) {
+  constructor(selector, name, link, alt, likes, id, userId, ownerId, handleCardClick, handleDeleteClick, handleLikeClick) {
     this._selector = selector;
     this._name = name;
     this._link = link;
@@ -10,6 +10,7 @@ class Card {
     this._owner = ownerId;
     this._handleCardClick = handleCardClick;
     this._handleDeleteClick = handleDeleteClick;
+    this._handleLikeClick = handleLikeClick;
   }
 
   _getTemplate() {
@@ -25,13 +26,29 @@ class Card {
     this._element = null;
   }
 
-  _activateLike = () => {
-    this._like.classList.toggle('element__like_active');
+  isLiked() {
+    const userHasLikedCard = this._likes.find(user => user._id === this._userId);
+    return userHasLikedCard;
   }
 
-  _setLikes() {
+  _activateLike = () => {
+    this._like.classList.add('element__like_active');
+  }
+
+  _disableLike = () => {
+    this._like.classList.remove('element__like_active');
+  }
+
+  setLikes(newLikes) {
+    this._likes = newLikes;
     const likeCountElements = this._element.querySelector('.element__like-count');
     likeCountElements.textContent = this._likes.length;
+
+    if (this.isLiked()) {
+      this. _activateLike();
+    } else {
+      this._disableLike();
+    }
   }
 
   getView() {
@@ -44,7 +61,7 @@ class Card {
 
     this._setEventListeners();
 
-    this._setLikes();
+    this.setLikes(this._likes);
     
     if(this._userId !== this._owner) {
       this._element.querySelector('.element__delete-icon').style.display = 'none';
@@ -58,7 +75,7 @@ class Card {
     
     this._element.querySelector('.element__delete-icon').addEventListener('click', () => {this._handleDeleteClick(this._id)});
 
-    this._like.addEventListener('click', this._activateLike);
+    this._like.addEventListener('click', () => {this._handleLikeClick(this._id)});
   }
 }
 

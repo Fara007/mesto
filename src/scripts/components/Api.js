@@ -90,6 +90,58 @@ class Api {
     })
     .catch((err) => console.log(err))
   }
+
+  addLike(id) {
+    return fetch(`https://mesto.nomoreparties.co/v1/cohort-37/cards/${id}/likes`, {
+      method: 'PUT',
+      headers: {
+        authorization: '84711bd2-b8ee-4cdf-8cf8-8f6af911774d',
+      }     
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } 
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
+    .catch((err) => console.log(err))
+  }
+
+  deleteLike(id) {
+    return fetch(`https://mesto.nomoreparties.co/v1/cohort-37/cards/${id}/likes`, {
+      method: 'DELETE',
+      headers: {
+        authorization: '84711bd2-b8ee-4cdf-8cf8-8f6af911774d',
+      }     
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } 
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
+    .catch((err) => console.log(err))
+  }
+   
+  updateAvatar(avatar) {
+    return fetch('https://mesto.nomoreparties.co/v1/cohort-37/users/me/avatar', {
+      method: 'PATCH',
+      headers: {
+        authorization: '84711bd2-b8ee-4cdf-8cf8-8f6af911774d',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        avatar
+      })        
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } 
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
+    .catch((err) => console.log(err))
+  }
 }
   
   export const api = new Api({

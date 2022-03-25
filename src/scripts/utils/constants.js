@@ -31,13 +31,16 @@ export const popupEditProfile = document.querySelector(".popup_edit");//Нахо
 export const popupAddCard = document.querySelector(".popup_add");//Находим попап добавления карточки
 export const popupImage = document.querySelector(".popup_image");//Находим попап с картинкой
 export const popupConfirm = document.querySelector(".popup__confirm");
+export const popupAvatar = document.querySelector(".popup_avatar");
 export const imageEl = document.querySelector(".figure__image");//Находим в документе элемент с картинкой
 export const captionEl = document.querySelector(".figure__subtitle");//Находим в документе подзаголовок к картинке
 //------------------------------------------------Profile----------------------------------------------------//
 export const editButton = document.querySelector(".profile__edit-button");//Находим в документе кнопку "Редактировать"
 export const addButton = document.querySelector(".profile__add-button");//Находим в документе кнопку "Добавить"
+export const avatarButton = document.querySelector(".profile__avatar-edit");
 export const profileNameUser = document.querySelector(".profile__info-name");//Находим в документе имя пользователя
 export const profileJobUser = document.querySelector(".profile__info-job");//Находим в документе деятельность пользователя
+export const profileAvatar = document.querySelector(".profile__avatar");
 //-------------------------------------------------Form------------------------------------------------------//
 export const formEdit = document.querySelector(".form_edit");//Находим форму редактирования
 export const formAdd = document.querySelector(".form_add");//Находим форму добавления
