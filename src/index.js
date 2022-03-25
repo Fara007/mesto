@@ -102,7 +102,7 @@ const popupUserInfo = new PopupWithForm(popupEditProfile, (inputs) => {
   popupUserInfo.renderLoading(true);
   api.editProfile(inputs[nameInput.name], inputs[jobInput.name])
     .then((res) => {
-      userInfoForm.setUserInfo(inputs[nameInput.name], inputs[jobInput.name]);
+      userInfoForm.setUserInfo(inputs[nameInput.name], inputs[jobInput.name], res.avatar);
       popupUserInfo.closePopup();
     })
     .catch((err) => { console.log(`Ошибка: ${err}`) })
