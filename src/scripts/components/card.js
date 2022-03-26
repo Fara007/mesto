@@ -23,7 +23,6 @@ class Card {
 
   deleteCard() {
     this._element.remove();
-    this._element = null;
   }
 
   isLiked() {
@@ -41,8 +40,7 @@ class Card {
 
   setLikes(newLikes) {
     this._likes = newLikes;
-    const likeCountElements = this._element.querySelector('.element__like-count');
-    likeCountElements.textContent = this._likes.length;
+    this._likeCountElements.textContent = this._likes.length;
 
     if (this.isLiked()) {
       this. _activateLike();
@@ -54,6 +52,7 @@ class Card {
   getView() {
     this._element = this._getTemplate();
     this._like = this._element.querySelector('.element__like');
+    this._likeCountElements = this._element.querySelector('.element__like-count');
     this._cardImage = this._element.querySelector('.element__image');
     this._element.querySelector('.element__title').textContent = this._name;
     this._cardImage.src = this._link;

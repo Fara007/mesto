@@ -1,147 +1,89 @@
 class Api {
-    constructor(options) {
-      // тело конструктора
+    constructor({ baseUrl, headers }) {
+      this._headers = headers
+      this._baseUrl = baseUrl
+    }
+
+    _checkResponse(res) {
+        if (res.ok) {
+            return res.json()
+        } else {
+            return Promise.reject(res.status)
+        }
     }
 
     getProfile() {
-      return fetch('https://nomoreparties.co/v1/cohort-37/users/me', {
-        headers: {
-          authorization: '84711bd2-b8ee-4cdf-8cf8-8f6af911774d'
-        }
+      return fetch(`${this._baseUrl}/users/me`, {
+        headers: this._headers
       })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } 
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
-      .catch((err) => console.log(err))
+      .then(this._checkResponse)
     }
   
     getInitialCards() {
-      return fetch('https://nomoreparties.co/v1/cohort-37/cards', {
-        headers: {
-          authorization: '84711bd2-b8ee-4cdf-8cf8-8f6af911774d'
-        }
+      return fetch(`${this._baseUrl}/cards`, {
+        headers: this._headers,
       })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } 
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
-      .catch((err) => console.log(err))
+      .then(this._checkResponse)
     }
   
     editProfile(name, about) {
-      return fetch('https://mesto.nomoreparties.co/v1/cohort-37/users/me', {
+      return fetch(`${this._baseUrl}/users/me`, {
         method: 'PATCH',
-        headers: {
-          authorization: '84711bd2-b8ee-4cdf-8cf8-8f6af911774d',
-          'Content-Type': 'application/json'
-        },
+        headers: this._headers,
         body: JSON.stringify({
           name,
           about
         })        
       })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } 
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
-      .catch((err) => console.log(err))
+      .then(this._checkResponse)
     }
 
     addCard(name, link) {
-      return fetch('https://mesto.nomoreparties.co/v1/cohort-37/cards', {
+      return fetch(`${this._baseUrl}/cards`, {
         method: 'POST',
-        headers: {
-          authorization: '84711bd2-b8ee-4cdf-8cf8-8f6af911774d',
-          'Content-Type': 'application/json'
-        },
+        headers:this._headers,
         body: JSON.stringify({
           name,
           link
         })        
       })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } 
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
-      .catch((err) => console.log(err))
+      .then(this._checkResponse)
     }
   
   deleteCard(id) {
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-37/cards/${id}`, {
+    return fetch(`${this._baseUrl}/cards/${id}`, {
       method: 'DELETE',
-      headers: {
-        authorization: '84711bd2-b8ee-4cdf-8cf8-8f6af911774d',
-      }     
+      headers: this._headers,
     })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } 
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((err) => console.log(err))
+    .then(this._checkResponse)
   }
 
   addLike(id) {
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-37/cards/${id}/likes`, {
-      method: 'PUT',
-      headers: {
-        authorization: '84711bd2-b8ee-4cdf-8cf8-8f6af911774d',
-      }     
+    return fetch(`${this._baseUrl}/cards/${id}/likes `, {
+      method: "PUT",
+      headers: this._headers,
     })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } 
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((err) => console.log(err))
+    .then(this._checkResponse)
   }
 
   deleteLike(id) {
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-37/cards/${id}/likes`, {
-      method: 'DELETE',
-      headers: {
-        authorization: '84711bd2-b8ee-4cdf-8cf8-8f6af911774d',
-      }     
+    return fetch(`${this._baseUrl}/cards/${id}/likes `, {
+      method: "DELETE",
+      headers: this._headers,
     })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } 
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((err) => console.log(err))
+    .then(this._checkResponse)
   }
    
   updateAvatar(avatar) {
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-37/users/me/avatar', {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      headers: {
-        authorization: '84711bd2-b8ee-4cdf-8cf8-8f6af911774d',
-        'Content-Type': 'application/json'
-      },
+      headers: this._headers,
       body: JSON.stringify({
-        avatar
-      })        
+          avatar
+      })
     })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } 
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
-    .catch((err) => console.log(err))
-  }
+    .then(this._checkResponse)
+}
 }
   
   export const api = new Api({

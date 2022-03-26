@@ -44,6 +44,7 @@ export const profileAvatar = document.querySelector(".profile__avatar");
 //-------------------------------------------------Form------------------------------------------------------//
 export const formEdit = document.querySelector(".form_edit");//Находим форму редактирования
 export const formAdd = document.querySelector(".form_add");//Находим форму добавления
+export const formAvatar = document.querySelector(".form_avatar");
 export const nameInput = formEdit.querySelector(".form__input_user_name");//Находим в форме первую строчку, содержащую имя пользователя
 export const jobInput = formEdit.querySelector(".form__input_user_job");//Находим в форме вторую строчку, содержащую деятельность пользователя
 export const placeName = document.querySelector(".form__input_place_name");//Находим в форме первую строчку, содержащую название
@@ -51,3 +52,12 @@ export const placeLink = document.querySelector(".form__input_place_link");//Н�
 export const cardAddButton = document.querySelector(".form__button_add_card")//Находим в форму кнопку "Создать" карточку
 //------------------------------------------------Template----------------------------------------------------//
 export const cardContainer = ".elements"//Находим в документе контейнер с карточками
+
+export const formValidationObj = ({
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__button',
+  inactiveButtonClass: 'form__button_disabled',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__error_visible'
+});
