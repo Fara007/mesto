@@ -1,10 +1,10 @@
-import '../src/styles/index.css';
-import Card from "../src/scripts/components/Card.js";
-import FormValidator from "../src/scripts/components/FormValidator.js";
-import Section from "../src/scripts/components/Section.js";
-import PopupWithForm from "../src/scripts/components/PopupWithForm.js";
-import PopupWithImage from "../src/scripts/components/PopupWithImage.js";
-import UserInfo from "../src/scripts/components/UserInfo.js";
+import '../pages/index.css';
+import Card from "../scripts/components/Card.js";
+import FormValidator from "../scripts/components/FormValidator.js";
+import Section from "../scripts/components/Section.js";
+import PopupWithForm from "../scripts/components/PopupWithForm.js";
+import PopupWithImage from "../scripts/components/PopupWithImage.js";
+import UserInfo from "../scripts/components/UserInfo.js";
 import {
   popupEditProfile,
   popupAddCard,
@@ -23,8 +23,8 @@ import {
   placeName,
   placeLink,
   cardContainer,
-} from "../src/scripts/utils/Constants.js";
-import {api} from '../src/scripts/components/Api.js';
+} from "../scripts/utils/Constants.js";
+import {api} from '../scripts/components/Api.js';
 
 let userId;
 
